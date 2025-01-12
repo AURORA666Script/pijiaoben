@@ -1,5 +1,5 @@
 
-local lib = {RainbowColorValue = 0, HueSelectionPosition = 0}
+local lib = {RainbowColorValue = , HueSelectionPosition = 0}
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -75,6 +75,11 @@ local function MakeDraggable(topbarobject, object)
         end
     )
 end
+for i, v in pairs(game.CoreGui:GetPlayers()) do
+    if v.Name == "ui" then
+    v:Destroy()
+    end
+end
 function lib:Window(text, preset, closebind)
     CloseBind = closebind or Enum.KeyCode.RightControl
     PresetColor = preset or Color3.fromRGB(44, 120, 224)
@@ -82,7 +87,7 @@ function lib:Window(text, preset, closebind)
     local Main = Instance.new("ImageLabel")
     local TabHold = Instance.new("Frame")
     local TabHoldLayout = Instance.new("UIListLayout")
-    local Title = Instance.new("TextLabel")
+    local ScriptTitle = Instance.new("TextLabel")
     local TabFolder = Instance.new("Folder")
     local DragFrame = Instance.new("Frame")
     local UIGradient = Instance.new("UIGradient")
@@ -111,17 +116,17 @@ function lib:Window(text, preset, closebind)
     TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
     TabHoldLayout.Padding = UDim.new(0, 11)
     
-    Title.Name = "Title"
-    Title.Parent = Main
-    Title.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-    Title.BackgroundTransparency = 1.000
-    Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
-    Title.Size = UDim2.new(0, 200, 0, 23)
-    Title.Font = Enum.Font.GothamSemibold
-    Title.Text = text
-    Title.TextColor3 = Color3.fromRGB(0, 56, 168)
-    Title.TextSize = 12.000
-    Title.TextXAlignment = Enum.TextXAlignment.Left
+    ScriptTitle.Name = "ScriptTitle"
+    ScriptTitle.Parent = Main
+    ScriptTitle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    ScriptTitle.BackgroundTransparency = 1.000
+    ScriptTitle.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+    ScriptTitle.Size = UDim2.new(0, 200, 0, 23)
+    ScriptTitle.Font = Enum.Font.GothamSemibold
+    ScriptTitle.Text = text
+    ScriptTitle.TextColor3 = Color3.fromRGB(0, 56, 168)
+    ScriptTitle.TextSize = 12.000
+    ScriptTitle.TextXAlignment = Enum.TextXAlignment.Left
     
     UIGradient.Color = ColorSequence.new{
         ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),
@@ -137,7 +142,7 @@ function lib:Window(text, preset, closebind)
         ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))
     }
     UIGradient.Rotation = 10
-    UIGradient.Parent = Title
+    UIGradient.Parent = ScriptTitle
     
     local TweenService = game:GetService("TweenService")
     local tweeninfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.In, -1)
