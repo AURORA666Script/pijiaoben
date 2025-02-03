@@ -1481,4 +1481,4 @@ function Cloudlib.Window(Cloudlib, name, theme)
     end
     return window
 end
-return Cloudlib, Language[LocalPlayer.LocaleId] or Language["en-us"]
+return Cloudlib
